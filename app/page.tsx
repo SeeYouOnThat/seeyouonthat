@@ -1,52 +1,85 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#faf8f5] text-gray-900">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center h-screen px-6">
-        <h1 className="text-6xl md:text-7xl font-serif text-gray-900 tracking-wide">
+    <main className="min-h-screen bg-[#0c0b0b] text-white flex flex-col items-center justify-center overflow-hidden relative font-serif">
+      {/* Background glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] to-black opacity-90" />
+
+      {/* Animated Gate */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+        className="z-10 text-center"
+      >
+        <h1 className="text-5xl md:text-7xl font-bold tracking-widest text-[#b8860b] mb-4">
           SeeYouOnThat
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl">
-          An invitation-only gateway for visionaries, investors, and creators to
-          connect in privacy and purpose.
+        <p className="text-gray-400 text-lg tracking-wide">
+          A Private Gateway to the World of Business & Luxury
         </p>
-        <div className="mt-10 flex space-x-4">
-          <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">
+
+        {/* Animated Door */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="mt-16 flex justify-center"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="relative w-64 h-64 bg-[#1f1f1f] border border-[#b8860b]/40 rounded-xl overflow-hidden shadow-[0_0_60px_#b8860b40]"
+          >
+            <motion.div
+              initial={{ x: 0 }}
+              animate={{ x: [0, 50, 0] }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute inset-0 flex items-center justify-center text-[#b8860b] text-3xl font-semibold"
+            >
+              The Gate Opens Soon
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Buttons */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3.5, duration: 1 }}
+          className="mt-20 flex flex-col md:flex-row gap-4 justify-center"
+        >
+          <a
+            href="#"
+            className="border border-[#b8860b] text-[#b8860b] px-6 py-3 rounded-full hover:bg-[#b8860b] hover:text-black transition-all duration-300"
+          >
             Apply for Membership
-          </button>
-          <button className="border border-black px-6 py-3 rounded-full hover:bg-gray-100 transition">
-            Contact Us
-          </button>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-24 px-6 bg-white text-center">
-        <h2 className="text-4xl font-serif mb-6 text-gray-900">About</h2>
-        <p className="max-w-3xl mx-auto text-gray-700 leading-relaxed">
-          SeeYouOnThat is a curated digital world connecting global leaders,
-          companies, and investors. Our platform offers a discreet environment
-          where opportunity meets excellence.
-        </p>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-24 px-6 text-center bg-[#faf8f5]">
-        <h2 className="text-4xl font-serif mb-6 text-gray-900">Contact</h2>
-        <p className="text-gray-700">
-          For inquiries and collaborations, reach us at{" "}
+          </a>
+          <a
+            href="#"
+            className="border border-gray-600 text-gray-400 px-6 py-3 rounded-full hover:border-[#b8860b] hover:text-[#b8860b] transition-all duration-300"
+          >
+            Useful Information
+          </a>
           <a
             href="mailto:info@seeyouonthat.com"
-            className="underline hover:text-black"
+            className="border border-gray-600 text-gray-400 px-6 py-3 rounded-full hover:border-[#b8860b] hover:text-[#b8860b] transition-all duration-300"
           >
-            info@seeyouonthat.com
+            Contact Us
           </a>
-        </p>
-      </section>
+        </motion.div>
+      </motion.div>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-gray-500 text-sm border-t border-gray-200">
-        © {new Date().getFullYear()} SeeYouOnThat. All rights reserved.
+      <footer className="absolute bottom-6 text-gray-500 text-sm z-10">
+        © {new Date().getFullYear()} SeeYouOnThat. All Rights Reserved.
       </footer>
     </main>
   );
